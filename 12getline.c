@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 int main(int argc, char **argv)
 {
-	char *buffer;
-	ssize_t readline;
+	char *buffer = NULL;
+	ssize_t readline = 0;
 	size_t buffersize;
 
 	(void)argc;
 	(void)argv;
 
-	printf("vshell $ ");
+	while(1)
+	{
+	printf("victor $ ");
 	readline = getline(&buffer, &buffersize, stdin);
 	if (readline == -1)
 	{
@@ -20,6 +23,7 @@ int main(int argc, char **argv)
 	}
 	printf("%s", buffer);
 	free(buffer);
+	}
 	return 0;
 
 }
