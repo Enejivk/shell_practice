@@ -6,24 +6,22 @@
 int main(int argc, char **argv)
 {
 	char *buffer = NULL;
-	ssize_t readline = 0;
-	size_t buffersize;
+	size_t buffersize = 0;
+	ssize_t readline;
 
 	(void)argc;
 	(void)argv;
-
-	while(1)
+	while (1)
 	{
-	printf("victor $ ");
+	printf("$ ");
 	readline = getline(&buffer, &buffersize, stdin);
+	printf("%s", buffer);
 	if (readline == -1)
 	{
 		perror("fail to getline");
 		exit(1);
 	}
-	printf("%s", buffer);
-	free(buffer);
 	}
-	return 0;
-
-}
+	free(buffer);
+	return (0);
+	}
